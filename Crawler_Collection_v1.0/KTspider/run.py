@@ -3,11 +3,10 @@
 import os
 import sys
 
-# from KTqueue import kt_queue as queue
 from spider.fetcher import Fetcher
 from rules import Rules as r
 from spider.script import Task
-# from KTimg import crawl_thread_img as cra
+
 
 sys.path.append(os.getcwd())
 

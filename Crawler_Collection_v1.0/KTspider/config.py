@@ -38,12 +38,7 @@ FUN_AND_NUM = {
     'ZS-news':          '901'                    # 掌视资讯
 }
 DEVELOPER = {
-    'SUQI': '0001',
-    'WULEWEI': '0002',
-    'LINHANQIU': '0003',
-    'LIUHANYU': '0004',
-    'WANGWENXUAN': '0005',
-    'ZHUPENGHUI': '0006'
+    'WULEWEI': '0001',
 }
 '''
 logger name
@@ -57,11 +52,11 @@ LOGS_FILE_NAME = './cp_data/logs/'+str(int(time.time()))+BY+'.txt'
 '''
 mysql setting
 '''
-HOST_MYSQL = "49.4.6.196"
+HOST_MYSQL = "127.0.0.1"
 PORT_MYSQL = "3306"
 DATABASE_MYSQL = "spider"
-USER_MYSQL = "bigdata"
-PASSWORD_MYSQL = "zhongguangzhangshi-Gongsi"
+USER_MYSQL = ""
+PASSWORD_MYSQL = ""
 CHARSET_MYSQL = "utf8"
 
 '''
@@ -84,21 +79,21 @@ BOOTSTRAP_SERVERS = ["192.168.5.240:9092"]
 '''
 OSS config
 '''
-ACCESS_KEY_ID = "LTAIIAJzW2R3CNim"
-ACCESS_KEY_SECRET = "8wq5ZfeQ6UYtkrsXl4wX1kTo1he7Mw"
-OSS_HOST = "https://oss-cn-beijing.aliyuncs.com"
-OSS_BUCKET = "cityparlor"
-OSS_BUCKET_HOST = "http://cityparlor.oss-cn-beijing.aliyuncs.com"
+ACCESS_KEY_ID = ""
+ACCESS_KEY_SECRET = ""
+OSS_HOST = ""
+OSS_BUCKET = ""
+OSS_BUCKET_HOST = ""
 
 """
 obs config
 """
-AK = 'BFXP6FFJALNELTUAGGBN'
-SK = 'fSIoAaOxg6aLaYxZmZaPIG4ga0RwBgMGVwJuu5Ca'
-SERVER = 'obs.myhwclouds.com'
-REGION = 'CHINA'
-SIGNATURE = 'v4'
-BUCKET_NAME = 'suqi'
+AK = ''
+SK = ''
+SERVER = ''
+REGION = ''
+SIGNATURE = ''
+BUCKET_NAME = ''
 
 """
 消息队列名
@@ -125,7 +120,7 @@ CITY_PARLOR_HEADERS = {
 """
 CITY_PARLOR_NEWS_SAVE_URL = "http://192.168.1.13:8080/cityparlor-web/cityparlor/cityparlor/top/news/save"
 CITY_PARLOR_REC_NEWS_SAVE_URL = "http://192.168.1.13:8080/cityparlor-web/cityparlor/cityparlor/index/add"
-OBS_IMG_PATH = "https://suqi.obs.myhwclouds.com/img/{date}"
+OBS_IMG_PATH = "https://sq.obs.myhwclouds.com/img/{date}"
 
 '''
 USER_AGENTS 随机头信息

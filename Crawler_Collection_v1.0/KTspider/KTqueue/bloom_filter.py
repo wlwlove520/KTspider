@@ -24,6 +24,27 @@ class Queue(object):
     def len(self):
         return self.r.llen(self.name)
 
+class HQueue(object):
+    def __init__(self, queue_name, host=HOST, port=PORT):
+        self.pool = redis.ConnectionPool(host=host, port=port)
+        self.r = redis.Redis(connection_pool=self.pool)
+        self.name = queue_name
+
+    def dele(self):
+        self.r.delete(self.name)
+
+    def redis_hset(self, url,value):
+        return self.r.hset(self.name,url ,value)
+
+    def redis_hget(self,url):
+        try:
+            return self.r.hget(self.name,url) or ''
+        except:
+            return ''
+
+    # def len(self):
+    #     return self.r.llen(self.name)
+
 
 class SimpleHash(object):
     def __init__(self, cap, seed):

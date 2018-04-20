@@ -75,9 +75,8 @@ class SaverAsync(object):
                     self.img_q.redis_put(i)
 
             # print(content)
-            # print(title,news_date,text_f)
-
-            self.save_to_mysql(area, category_id, title, self.t_date1, text_f, content, img_show, url, classify, languageVersion)
+            print(title,self.t_date1,text_f)
+            # self.save_to_mysql(area, category_id, title, self.t_date1, text_f, content, img_show, url, classify, languageVersion)
 
 
 

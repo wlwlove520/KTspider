@@ -10,6 +10,25 @@ class Rules(object):
     rules_list = [
         # {
         #     'url': [
+        #         'http://www.bjda.gov.cn/bjfda/zwgk29/gzdt14/tzgg/tz/index.html'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//ul[@class="list_01"]/li//a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//h1/text()',
+        #         'content': '//td[@class="conzt"]',
+        #         'text_f': "臻品艺术网",
+        #         'languageVersion': 'ZH',
+        #         'category_id': '1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
         #        'http://www.artwer.com/kwzhtml/comprehensive/',
         #         'http://www.artwer.com/kwzhtml/essential/'
         #     ],
@@ -28,120 +47,120 @@ class Rules(object):
         #         'news_date': '//span[@class="time-source"]/text()',
         #     }
         # },
-#         {
-#             'url': [
-#                 'http://www.zhongguolibo.com/libosite/politics/'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//h3/a/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//h1/text()',
-#                 'content': '//td[@class="contentddd"]',
-#                 'text_f': "中国历博网",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
-#         {
-#             'url': [
-#                 'http://new.artsfans.com/news/News!more.htm?sid=3'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//span[@class="news_tit"]/parent::a/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//div[@id="article_tit"]/text()',
-#                 'content': '//div[@id="article"]',
-#                 'text_f': "中国艺术品收藏网",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
-#         {
-#             'url': [
-#                 'http://www.zp798.com/index.php?c=content&a=list&catid=1'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//dl[@class="f_r"]//a/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//h2/text()',
-#                 'content': '//div[@class="news_content"]',
-#                 'text_f': "臻品艺术网",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
-#         {
-#             'url': [
-#                 'http://www.99ys.com/'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//div[@class="title"]//a/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//div[@class="article_title"]/text()',
-#                 'content': '//div[@class="article"]',
-#                 'text_f': "99艺术网",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
-#         {
-#             'url': [
-#                 'http://www.artron.net/newsFlash/'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//ul[@class="txtList30"]/li/a/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//h1/text()',
-#                 'content': '//div[@class="detail newsContentDetail"]',
-#                 'text_f': "雅昌艺术网",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
-#         {
-#             'url': [
-#                 'http://beian.artron.net/newsList.php'
-#             ],
-#             'request_type': 'get',
-#             'datas': {
-#             },
-#             'position': {'url': '//div[@class="newsL"]//li/a[2]/@href'},
-#             'area': '',
-#             'type': 'xpath',
-#             'children_position': {
-#                 'title': '//h1/text()',
-#                 'content': '//div[@class="detail newsContentDetail"]',
-#                 'text_f': "雅昌鉴证备案",
-#                 'languageVersion': 'ZH',
-#                 'category_id':'1708161040317410000',
-#                 'news_date': '//span[@class="time-source"]/text()',
-#             }
-#         },
+        # {
+        #     'url': [
+        #         'http://www.zhongguolibo.com/libosite/politics/'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//h3/a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//h1/text()',
+        #         'content': '//td[@class="contentddd"]',
+        #         'text_f': "中国历博网",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
+        #         'http://new.artsfans.com/news/News!more.htm?sid=3'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//span[@class="news_tit"]/parent::a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//div[@id="article_tit"]/text()',
+        #         'content': '//div[@id="article"]',
+        #         'text_f': "中国艺术品收藏网",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
+        #         'http://www.zp798.com/index.php?c=content&a=list&catid=1'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//dl[@class="f_r"]//a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//h2/text()',
+        #         'content': '//div[@class="news_content"]',
+        #         'text_f': "臻品艺术网",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
+        #         'http://www.99ys.com/'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//div[@class="title"]//a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//div[@class="article_title"]/text()',
+        #         'content': '//div[@class="article"]',
+        #         'text_f': "99艺术网",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
+        #         'http://www.artron.net/newsFlash/'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//ul[@class="txtList30"]/li/a/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//h1/text()',
+        #         'content': '//div[@class="detail newsContentDetail"]',
+        #         'text_f': "雅昌艺术网",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
+        # {
+        #     'url': [
+        #         'http://beian.artron.net/newsList.php'
+        #     ],
+        #     'request_type': 'get',
+        #     'datas': {
+        #     },
+        #     'position': {'url': '//div[@class="newsL"]//li/a[2]/@href'},
+        #     'area': '',
+        #     'type': 'xpath',
+        #     'children_position': {
+        #         'title': '//h1/text()',
+        #         'content': '//div[@class="detail newsContentDetail"]',
+        #         'text_f': "雅昌鉴证备案",
+        #         'languageVersion': 'ZH',
+        #         'category_id':'1708161040317410000',
+        #         'news_date': '//span[@class="time-source"]/text()',
+        #     }
+        # },
 #         {
 #             'url': [
 #                 'http://www.jingyun68.com/?list-664.html'
@@ -820,25 +839,25 @@ class Rules(object):
 #                 'news_date': '//span[@class="time-source"]/text()',
 #             }
 #         },
-        {
-            'url': [
-                'http://www.hainanmuseum.org/xwdt/?tag_id=1'
-            ],
-            'request_type': 'get',
-            'datas': {
-            },
-            'position': {'url': '//ul[@class="new-body"]/li/a/@href'},
-            'area': '',
-            'type': 'xpath',
-            'children_position': {
-                'title': '//div[@class="title"]/text()',
-                'content': '//div[@class="article_cont"]',
-                'text_f': "海南省博物馆",
-                'languageVersion': 'ZH',
-                'category_id': '1708161040317410000',
-                'news_date': '//span[@class="time-source"]/text()',
-            }
-        },
+#         {
+#             'url': [
+#                 'http://www.hainanmuseum.org/xwdt/?tag_id=1'
+#             ],
+#             'request_type': 'get',
+#             'datas': {
+#             },
+#             'position': {'url': '//ul[@class="new-body"]/li/a/@href'},
+#             'area': '',
+#             'type': 'xpath',
+#             'children_position': {
+#                 'title': '//div[@class="title"]/text()',
+#                 'content': '//div[@class="article_cont"]',
+#                 'text_f': "海南省博物馆",
+#                 'languageVersion': 'ZH',
+#                 'category_id': '1708161040317410000',
+#                 'news_date': '//span[@class="time-source"]/text()',
+#             }
+#         },
 #
 #         {
 #             'url': [

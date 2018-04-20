@@ -10,6 +10,8 @@ from asyncio import Queue
 from spider.save_result import SaverAsync
 from config import *
 
+from KTqueue import bloom_filter as SQqueue
+
 logging.basicConfig(filename='logger.log', level=logging.INFO,
                     format='%(levelname)s: %(asctime)s %(filename)s "%(message)s"',
                     datefmt='[%d/%b/%Y %H:%M:%S]',
@@ -31,10 +33,13 @@ class Fetcher(object):
         self.headers = get_header()
         self._newq = Queue(loop=self._loop)
         self.save = SaverAsync()
+        self.queue = SQqueue.HQueue('test')
         self.put_task(t.task)
 
         self.proxy_url = 'http://127.0.0.1:8000/?types=0&count=10&country=国内'
         self.change_proxy = False
+
+
 
 
     def delete_ip(self, ip):
@@ -70,7 +75,7 @@ class Fetcher(object):
         :return:
         """
         if not self._session:
-            self._session = aiohttp.ClientSession(loop=self._loop,headers=self.headers)
+            self._session = aiohttp.ClientSession(loop=self._loop)
 
     async def close_session(self):
         """
@@ -80,14 +85,13 @@ class Fetcher(object):
         if not self._session.closed:
             await self._session.close()
 
-    async def get_response(self, url,request_type,datas):
+    async def get_response(self, url,request_type,datas,headers,is_children):
         """
         get response.text()
         :param url:
         :return:
         """
         try:
-            self.headers = get_header()
             if self.change_proxy:
                 proxy, ip = self.get_proxies()
                 logging.info('get proxy: %s' % proxy)
@@ -96,9 +100,11 @@ class Fetcher(object):
                     assert response.status == 200
                     return await response.text()
             if request_type == 'post':
-                async with self._session.post(url, headers=self.headers, data = datas) as response:
+                async with self._session.post(url, headers=headers, data = datas) as response:
                     # assert response.status == 200
                     try:
+                        if not is_children:
+                            self.queue.redis_hset(url, str(response.headers.get('Last-Modified', headers.get('If-Modified-Since'))))
                         return await response.text()
                     except:
                         try:
@@ -109,9 +115,10 @@ class Fetcher(object):
                             except:
                                 return await response.text(encoding='gb18030', errors='ignore')
             else:
-                async with self._session.get(url, headers=self.headers) as response:
-                    # assert response.status == 200
+                async with self._session.get(url, headers=headers) as response:
                     try:
+                        if not is_children:
+                            self.queue.redis_hset(url, str(response.headers.get('Last-Modified', headers.get('If-Modified-Since'))))
                         return await response.text()
                     except:
                         try:
@@ -124,8 +131,9 @@ class Fetcher(object):
         except TimeoutError as e:
             logging.error('get html timeout:%s', e)
             return ''
-        # except Exception as e:
-        #     return
+        except Exception as e:
+            print(e)
+            return ''
 
     async def get_a_task(self):
         """
@@ -157,6 +165,8 @@ class Fetcher(object):
                 for key in tt.keys():
                     info_d[key] = tt.get(key)
                 info_d['url'] = url
+                info_d['headers'] = get_header()
+                info_d['headers']['If-Modified-Since'] = str(self.queue.redis_hget(url))
                 yield info_d
 
         while True:
@@ -182,12 +192,14 @@ class Fetcher(object):
                 url = task.get('url')
                 request_type = task.get('request_type','')
                 datas = task.get('datas','')
-                print(url)
+                headers = task.get('headers', '')
+                is_children = task.get('is_children', '')
 
-                content = await self.get_response(url,request_type,datas)
-
-                # if content:
-                #     continue
+                content = await self.get_response(url,request_type,datas,headers,is_children)
+                # print(content)
+                if not content:
+                    self.finish_a_task()
+                    continue
                 resp_content, new = await self.t.process_result(task, content)
                 save_result = await self.save.save(url, resp_content)
                 if save_result:

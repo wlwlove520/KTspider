@@ -42,7 +42,6 @@ class Task(object):
         页面跳转定制化函数，接收请求页面源码和task
         返回子页面的task或者子页面的解析结果
         """
-
         r = collections.defaultdict()
         parse_type = task.get('type')
         is_children = task.get('is_children')
@@ -91,7 +90,7 @@ class Task(object):
             task["url"] = us
         else:
             try:
-                task['url'] = [urljoin(url, u) for u in r.get('url')]
+                task['url'] = [urljoin(url, u) for u in r.get('url')[:3]]
             except:
                 pass
         task['url'] = filter_url(url,task['url'])
